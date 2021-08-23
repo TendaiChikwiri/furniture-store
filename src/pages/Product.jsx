@@ -1,5 +1,7 @@
 import React from 'react';
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom";
+import { BiArrowBack } from "react-icons/bi";
+import "../styles/ProductPage.scss"
 
 const Product = ({ furnitureData }) => {
   let { id } = useParams();
@@ -10,9 +12,9 @@ const Product = ({ furnitureData }) => {
       item = furnitureData[i];
     }
   }
-  console.log(item)
   return (
     <div>
+      <h1><Link to="/"><BiArrowBack /></Link></h1>
       <h1>{item.name}</h1>
       <p>{item.description}</p>
     </div>

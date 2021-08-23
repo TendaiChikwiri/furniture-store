@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles/global.scss"
 
 import {
   BrowserRouter as Router,
@@ -10,6 +11,7 @@ import {
 // Pages
 import Home from "./pages/Home";
 import Product from "./pages/Product";
+import Checkout from "./pages/Checkout";
 
 // Components
 import Header from "./components/Header"
@@ -27,6 +29,9 @@ function App() {
         </Route>
         <Route exact path="/">
           <Home furnitureData={furnitureData} />
+        </Route>
+        <Route path="/checkout">
+          <Checkout />
         </Route>
       </Switch>
     </Router>

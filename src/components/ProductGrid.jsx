@@ -1,16 +1,21 @@
 import React from 'react'
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import "../styles/ProductGrid.scss"
 
 const ProductGrid = ({ furnitureData }) => {
   return (
     <div className="product-grid">
       {furnitureData.map((item) => (
-        <div key={item.id} className="product-container">
+        <div key={item.id} className="product">
           <Link to={`/product/${item.id}`} >
-
+            <img src={item.img} alt="" />
             <h1>{item.name}</h1>
           </Link>
-          <p>{item.description}</p>
+          <div className="price-add">
+            <p className="price">&#36;{item.price}</p>
+            <button className="addCart">Add To Cart</button>
+          </div>
+
         </div>
       ))}
     </div>
