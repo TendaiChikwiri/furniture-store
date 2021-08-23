@@ -13,11 +13,11 @@ const Product = ({ furnitureData }) => {
     }
   }
   return (
-    <div>
+    <main>
       <h1><Link to="/"><BiArrowBack /></Link></h1>
       <h1>{item.name}</h1>
       <p>{item.description}</p>
-    </div>
+    </main>
   )
 }
 

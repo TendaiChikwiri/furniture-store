@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import "../styles/ProductGrid.scss"
+import "../styles/ProductGrid.scss";
 
-const ProductGrid = ({ furnitureData }) => {
+const ProductGrid = ({ furnitureData, addToCart }) => {
   return (
     <div className="product-grid">
       {furnitureData.map((item) => (
@@ -13,12 +13,13 @@ const ProductGrid = ({ furnitureData }) => {
           </Link>
           <div className="price-add">
             <p className="price">&#36;{item.price}</p>
-            <button className="addCart">Add To Cart</button>
+            <button onClick={() => addToCart(item)} className="addCart">Add To Cart</button>
           </div>
 
         </div>
-      ))}
-    </div>
+      ))
+      }
+    </div >
   )
 }
 

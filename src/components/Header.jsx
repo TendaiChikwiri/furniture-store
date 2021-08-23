@@ -3,16 +3,16 @@ import "../styles/Header.scss"
 import { Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi"
 
-const Header = () => {
+const Header = ({ cart }) => {
+  const cartTotal = (total, item) => total + item.count
   return (
     <nav className="nav-bar">
       <Link className="nav-item" to="/">
         Home Logo
       </Link>
       <Link className="nav-item" to="/checkout">
-        <h1>
-          <FiShoppingCart />
-        </h1>
+        <FiShoppingCart />
+        {cart.length ? cart.reduce(cartTotal, 0) : "0"}
       </Link>
     </nav>
   )
