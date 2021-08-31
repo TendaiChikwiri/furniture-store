@@ -1,4 +1,31 @@
+.go-back {
+  padding: 1rem 0;
+}
+
 a {
   text-decoration: none;
   color: black;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+  .img-container {
+    img {
+      object-fit: contain;
+      width: 100%;
+    }
+  }
+  .info-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .price-cart {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
 }

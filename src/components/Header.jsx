@@ -8,7 +8,7 @@ const Header = ({ cart }) => {
   return (
     <nav className="nav-bar">
       <Link className="nav-item" to="/">
-        Home Logo
+        <h2>Furniture</h2>
       </Link>
       <Link className="nav-item" to="/checkout">
         <FiShoppingCart />

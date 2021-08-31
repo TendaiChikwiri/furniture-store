@@ -14,9 +14,20 @@ const Product = ({ furnitureData }) => {
   }
   return (
     <main>
-      <h1><Link to="/"><BiArrowBack /></Link></h1>
-      <h1>{item.name}</h1>
-      <p>{item.description}</p>
+      <h1 className="go-back"><Link to="/"><BiArrowBack /></Link></h1>
+      <div className="product-container">
+        <div className="img-container">
+          <img src={item.img} alt="" />
+        </div>
+        <div className="info-container">
+          <h1>{item.name}</h1>
+          <p>{item.description}</p>
+          <div className="price-cart">
+            <h3>${item.price}</h3>
+            <button>Add To Cart</button>
+          </div>
+        </div>
+      </div>
     </main>
   )
 }

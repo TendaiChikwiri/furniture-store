@@ -24,7 +24,6 @@ function App() {
   const [cart, setCart] = useState([])
 
   const addToCart = (addedItem) => {
-    console.log(typeof addedItem)
     // Check if item is already in cart
     const isItemInCart = cart.find(item => item.id === addedItem.id);
     // If item is in cart increase item count
@@ -42,8 +41,7 @@ function App() {
 
   }
 
-  const removeFromCart = (id) => {
-    console.log("remove clicked")
+  const reduceFromCart = (id) => {
     // If count is one, remove when count is zero 
     const updatedCount = cart.map(item =>
       item.id === id
@@ -54,6 +52,15 @@ function App() {
       return item.count >= 0
     }
     setCart(updatedCount.filter(removeZero)
+    )
+  }
+
+  const deleteFromCart = (id) => {
+    const deleteitem = (item) => {
+      return item.id !== id
+    }
+    setCart(
+      cart.filter(deleteitem)
     )
   }
 
@@ -68,7 +75,7 @@ function App() {
           <Home furnitureData={furnitureData} addToCart={addToCart} />
         </Route>
         <Route path="/checkout">
-          <Checkout removeFromCart={removeFromCart} addToCart={addToCart} cart={cart} />
+          <Checkout deleteFromCart={deleteFromCart} reduceFromCart={reduceFromCart} addToCart={addToCart} cart={cart} />
         </Route>
       </Switch>
     </Router>

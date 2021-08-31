@@ -1,15 +1,18 @@
 .product-grid {
   margin: 3rem 0;
+  padding: 1rem 0;
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   .product {
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 2rem;
-    border-radius: 15px;
+    // padding: 2rem;
+    border-radius: 10px;
     a {
       text-decoration: none;
       color: inherit;
@@ -21,38 +24,41 @@
     h1 {
       font-weight: 600;
     }
-    .price-add {
-      padding: 0.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      .price {
-        font-weight: 600;
-        font-size: 1.2rem;
-      }
-      .addCart {
-        outline: none;
-        font-weight: 600;
-        border: none;
-        padding: 0.75rem 1rem;
-        color: white;
-        transition: transform 0.15s;
-        cursor: pointer;
-        position: relative;
-        z-index: 1;
-
-        &:after {
-          content: "";
-          background-color: gray;
-          transition: transform 0.15s;
-          border-radius: 7px;
-          position: absolute;
-          inset: 0;
-          z-index: -1;
+    .product-info {
+      padding: 0 1rem 1rem 1rem;
+      .price-cart {
+        margin: 1rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .price {
+          font-weight: 600;
+          font-size: 1.2rem;
         }
+        .addCart {
+          outline: none;
+          font-weight: 700;
+          border: none;
+          padding: 0.75rem 1rem;
+          color: white;
+          transition: transform 0.15s;
+          cursor: pointer;
+          position: relative;
+          z-index: 1;
 
-        &:hover::after {
-          transform: scale(1.1);
+          &:after {
+            content: "";
+            background-color: gray;
+            transition: transform 0.15s;
+            border-radius: 7px;
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+          }
+
+          &:active::after {
+            transform: scale(1.05);
+          }
         }
       }
     }
