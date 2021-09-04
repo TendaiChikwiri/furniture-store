@@ -22,6 +22,7 @@
       width: 100%;
     }
     h1 {
+      color: rgb(78, 78, 78);
       font-weight: 600;
     }
     .product-info {
@@ -33,11 +34,12 @@
         align-items: center;
         .price {
           font-weight: 600;
-          font-size: 1.2rem;
+          font-size: 1.5rem;
         }
         .addCart {
           outline: none;
-          font-weight: 700;
+          font-weight: 600;
+          font-size: 1rem;
           border: none;
           padding: 0.75rem 1rem;
           color: white;
@@ -48,9 +50,9 @@
 
           &:after {
             content: "";
-            background-color: gray;
+            background-color: black;
             transition: transform 0.15s;
-            border-radius: 7px;
+            border-radius: 10px;
             position: absolute;
             inset: 0;
             z-index: -1;

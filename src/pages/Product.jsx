@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
-import "../styles/ProductPage.scss"
+import "../styles/ProductPage.scss";
 
 const Product = ({ furnitureData }) => {
   let { id } = useParams();
@@ -20,11 +20,11 @@ const Product = ({ furnitureData }) => {
           <img src={item.img} alt="" />
         </div>
         <div className="info-container">
-          <h1>{item.name}</h1>
-          <p>{item.description}</p>
+          <h1 className="name">{item.name}</h1>
+          <p className="description">{item.description}</p>
           <div className="price-cart">
-            <h3>${item.price}</h3>
-            <button>Add To Cart</button>
+            <h3 className="price">${item.price}</h3>
+            <button className="addCart">Add To Cart</button>
           </div>
         </div>
       </div>

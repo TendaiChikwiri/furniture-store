@@ -48,7 +48,7 @@ const furnitureData = [
   },
   {
     id: 6,
-    name: "Debbie tub Chair",
+    name: "Debbie Tub Chair",
     description: "Our retro - inspired Debbie chair has a robust silhouette and softly curved profile for comfy back support.",
     price: 195,
     category: "Chair",
