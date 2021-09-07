@@ -10,7 +10,21 @@
   justify-content: flex-end;
   align-items: center;
   z-index: 1000;
+  .cart-icon{
+	height: 2rem;
+  }
+
   .nav-item {
+    &:last-child {
+	display: flex;
+	align-items: center;
+	font-size: 1.3rem;
+	img{
+	object-fit: contain;
+	margin: 0 0.25rem;
+	}
+    }
+
     &:first-child {
       margin-left: 0;
       margin-right: auto;
