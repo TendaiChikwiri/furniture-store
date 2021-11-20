@@ -1,29 +1,29 @@
-import React from 'react'
-import { Link } from "react-router-dom";
-import "../styles/ProductGrid.scss";
+import { Box, Flex, Heading, Text, Image, SimpleGrid } from "@chakra-ui/react";
+import FurnitureModal from "./FurnitureModal";
 
 const ProductGrid = ({ furnitureData, addToCart }) => {
   return (
-    <div className="product-grid">
+    <SimpleGrid minChildWidth="300px" spacing="2rem" borderRadius="lg">
       {furnitureData.map((item) => (
-        <div key={item.id} className="product">
-          <Link to={`/product/${item.id}`} >
-            <img src={item.img} alt="" />
+        <Box
+          key={item.id}
+          boxShadow="lg"
+          borderRadius="md"
+          sx={{ overflow: "hidden" }}
+        >
+          <Image src={item.img} alt="" objectFit="cover" width="100%" />
+          <Flex direction="column" p="2">
+            <Heading fontSize="2xl">{item.name}</Heading>
+            <Flex justifyContent="space-between" align="center">
+              <Text fontSize="xl">&#36;{item.price}</Text>
+              <FurnitureModal item={item} addToCart={addToCart} />
+              {/* <Button onClick={() => addToCart(item)}>Add To Cart</Button> */}
+            </Flex>
+          </Flex>
+        </Box>
+      ))}
+    </SimpleGrid>
+  );
+};
 
-          </Link>
-          <div className="product-info">
-            <h1>{item.name}</h1>
-            <div className="price-cart">
-              <p className="price">&#36;{item.price}</p>
-              <button onClick={() => addToCart(item)} className="addCart">Add To Cart</button>
-            </div>
-          </div>
-
-        </div>
-      ))
-      }
-    </div >
-  )
-}
-
-export default ProductGrid
+export default ProductGrid;

@@ -1,10 +1,12 @@
-import React from 'react'
+import React from "react";
 import "../styles/Checkout.scss";
-import deleteIcon from "../assets/images/bin-icon.png"
+import deleteIcon from "../assets/images/bin-icon.png";
 const Checkout = ({ cart, addToCart, reduceFromCart, deleteFromCart }) => {
   return (
     <main>
-      {cart.length === 0 ? <p className="empty-cart">No items in cart</p> : null}
+      {cart.length === 0 ? (
+        <p className="empty-cart">No items in cart</p>
+      ) : null}
       <div className="cart">
         <ul className="items-list">
           {cart.map((item) => (
@@ -17,20 +19,23 @@ const Checkout = ({ cart, addToCart, reduceFromCart, deleteFromCart }) => {
                 <div className="more-less">
                   <button onClick={() => reduceFromCart(item.id)}>-</button>
                   <p>{item.count}</p>
-                  <button onClick={() => addToCart(item)} >+</button>
+                  <button onClick={() => addToCart(item)}>+</button>
                 </div>
                 <p>&#36;{item.count * item.price}</p>
-                <button className="delete-btn" onClick={() => deleteFromCart(item.id)} ><img src={deleteIcon} alt="" /></button>
+                <button
+                  className="delete-btn"
+                  onClick={() => deleteFromCart(item.id)}
+                >
+                  <img src={deleteIcon} alt="" />
+                </button>
               </div>
             </li>
           ))}
         </ul>
-        <div className="total">
-
-        </div>
+        <div className="total"></div>
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default Checkout
+export default Checkout;
