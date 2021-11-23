@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "@fontsource/nunito-sans";
 // Pages
 import Home from "./pages/Home";
-import Product from "./pages/Product";
+
 import Checkout from "./pages/Checkout";
 
 // Components
@@ -61,7 +61,7 @@ function App() {
 
   return (
     <ChakraProvider theme={fontTheme}>
-      <Container maxWidth="container.lg">
+      <Container maxWidth="container.lg" sx={{ marginBottom: "10rem" }}>
         <Router>
           <Header
             cart={cart}
@@ -70,9 +70,6 @@ function App() {
             addToCart={addToCart}
           />
           <Switch>
-            <Route path="/product/:id">
-              <Product furnitureData={furnitureData} />
-            </Route>
             <Route exact path="/">
               <Home furnitureData={furnitureData} addToCart={addToCart} />
             </Route>

@@ -11,7 +11,13 @@ const ProductGrid = ({ furnitureData, addToCart }) => {
           borderRadius="md"
           sx={{ overflow: "hidden" }}
         >
-          <Image src={item.img} alt="" objectFit="cover" width="100%" />
+          <Image
+            loading="lazy"
+            src={item.img}
+            alt=""
+            objectFit="cover"
+            width="100%"
+          />
           <Flex direction="column" p="2">
             <Heading fontSize="2xl">{item.name}</Heading>
             <Flex justifyContent="space-between" align="center">

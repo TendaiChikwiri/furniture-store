@@ -7,16 +7,17 @@ const CartItems = ({ cart, reduceFromCart, deleteFromCart, addToCart }) => {
       {cart.map((item) => (
         <Flex
           direction="column"
+          slign="center"
           justifyContent="flex-end"
-          align="center"
           my="5"
+          key={item.id}
         >
-          <Flex align="center">
+          <Flex direction="column" align="center">
+            <Heading fontSize="lg">{item.name}</Heading>{" "}
             <Image src={item.img} objectFit="contain" width="12rem" />
-            <Heading fontSize="lg">{item.name}</Heading>
           </Flex>
           <Spacer />
-          <Flex align="center">
+          <Flex align="center" justify="center">
             {item.count === 1 ? (
               <Button
                 variant="outline"
@@ -42,10 +43,10 @@ const CartItems = ({ cart, reduceFromCart, deleteFromCart, addToCart }) => {
             >
               <AddIcon />
             </Button>
-            <Text align="right" fontWeight="" fontSize="lg" width="10ch">
-              ${item.price * item.count}
-            </Text>
           </Flex>
+          <Text align="center" fontWeight="" fontSize="lg">
+            ${item.price * item.count}
+          </Text>
         </Flex>
       ))}
     </>

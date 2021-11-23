@@ -1,4 +1,3 @@
-import "../styles/Header.scss";
 import { Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import {
@@ -14,6 +13,7 @@ import {
   Flex,
   Text,
   Heading,
+  Spacer,
 } from "@chakra-ui/react";
 import CheckoutItems from "./CartItems";
 
@@ -22,12 +22,27 @@ const Header = ({ cart, reduceFromCart, deleteFromCart, addToCart }) => {
   const cartTotalCost = (total, item) => total + item.count * item.price;
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <nav className="nav-bar">
-      <Link className="nav-item" to="/">
-        <Heading fontSize="xl">Furniture Store</Heading>
+    <Flex
+      p="2"
+      align="center"
+      backgroundColor="white"
+      w="100%"
+      sx={{ zIndex: "1000" }}
+    >
+      <Link to="/">
+        <Heading fontSize="2xl">Furniture Store</Heading>
       </Link>
-      <Button onClick={onOpen} className="nav-item">
-        <FiShoppingCart /> {cart.length ? cart.reduce(cartTotalItems, 0) : "0"}
+      <Spacer />
+      <Button
+        variant="outline"
+        colorScheme="teal"
+        onClick={onOpen}
+        fontSize="md"
+      >
+        <Text fontSize="md" mr="1">
+          {cart.length ? cart.reduce(cartTotalItems, 0) : "0"}
+        </Text>
+        <FiShoppingCart />
       </Button>
       <Modal size="xl" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -41,19 +56,9 @@ const Header = ({ cart, reduceFromCart, deleteFromCart, addToCart }) => {
               deleteFromCart={deleteFromCart}
               addToCart={addToCart}
             />
-            {cart.map((item) => (
-              <Flex key={item.id}>
-                {item.name}
-                {item.count}
-                <Button onClick={() => reduceFromCart(item.id)}>Reduce</Button>
-                <Button onClick={() => deleteFromCart(item.id)}>Remove</Button>
-                <Button onClick={() => addToCart(item, 1)}>Add</Button>
-                <Text>{item.price * item.count}</Text>
-              </Flex>
-            ))}
             <Flex justifyContent="flex-end">
-              <Text>
-                Total: {cart.length ? cart.reduce(cartTotalCost, 0) : "0"}
+              <Text fontWeight="bold" fontSize="2xl">
+                Total: ${cart.length ? cart.reduce(cartTotalCost, 0) : "0"}
               </Text>
             </Flex>
           </ModalBody>
@@ -62,11 +67,19 @@ const Header = ({ cart, reduceFromCart, deleteFromCart, addToCart }) => {
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
+            <Link
+              to="/checkout"
+              onClick={() => {
+                onClose();
+              }}
+            >
+              {" "}
+              Proceed to payment{" "}
+            </Link>
           </ModalFooter>
         </ModalContent>
       </Modal>
-    </nav>
+    </Flex>
   );
 };
 

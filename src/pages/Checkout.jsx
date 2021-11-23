@@ -1,40 +1,70 @@
-import React from "react";
-import "../styles/Checkout.scss";
-import deleteIcon from "../assets/images/bin-icon.png";
+import {
+  Box,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+  Heading,
+  Container,
+  Flex,
+  Text,
+  Button,
+  VStack,
+} from "@chakra-ui/react";
 const Checkout = ({ cart, addToCart, reduceFromCart, deleteFromCart }) => {
+  const cartTotalCost = (total, item) => total + item.count * item.price;
+  const subTotal = cart.reduce(cartTotalCost, 0).toFixed(2);
+  const deliveryFee = (cart.reduce(cartTotalCost, 0) * 0.02).toFixed(2);
+  const total = (parseInt(subTotal) + parseFloat(deliveryFee)).toFixed(2);
   return (
-    <main>
-      {cart.length === 0 ? (
-        <p className="empty-cart">No items in cart</p>
-      ) : null}
-      <div className="cart">
-        <ul className="items-list">
-          {cart.map((item) => (
-            <li key={item.id} className="item">
-              <div className="img-container">
-                <img src={item.img} alt="" />
-              </div>
-              <div className="item-details">
-                <h3 className="item-name">{item.name}</h3>
-                <div className="more-less">
-                  <button onClick={() => reduceFromCart(item.id)}>-</button>
-                  <p>{item.count}</p>
-                  <button onClick={() => addToCart(item)}>+</button>
-                </div>
-                <p>&#36;{item.count * item.price}</p>
-                <button
-                  className="delete-btn"
-                  onClick={() => deleteFromCart(item.id)}
-                >
-                  <img src={deleteIcon} alt="" />
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <div className="total"></div>
-      </div>
-    </main>
+    <Container maxWidth="container.sm">
+      <Heading size="lg">Payment Details</Heading>
+      <VStack spacing={2} mt="10">
+        <FormControl id="email">
+          <FormLabel>Email address</FormLabel>
+          <Input type="email" />
+        </FormControl>
+        <FormControl id="card-details">
+          <FormLabel>Card Number</FormLabel>
+          <Input type="number" />
+          <FormHelperText>Please don't enter your card number</FormHelperText>
+        </FormControl>
+        <Flex justify="flex-end" width="100%">
+          <FormControl id="expiry">
+            <FormLabel>Expiry Date</FormLabel>
+            <Input type="date" />
+          </FormControl>
+          <FormControl width="20ch" id="cvc">
+            <FormLabel>CVC</FormLabel>
+            <Input type="number" max="999" />
+          </FormControl>
+        </Flex>
+        <FormControl>
+          <FormLabel>Cardholder Name</FormLabel>
+          <Input type="text" />
+        </FormControl>
+        <FormControl>
+          <FormLabel>Billing Address</FormLabel>
+          <Input type="text" />
+        </FormControl>
+        <Flex mt="4" justify="space-between" width="100%">
+          <Text>Subtotal:</Text>
+          <Text>${subTotal}</Text>
+        </Flex>
+        <Flex justify="space-between" width="100%">
+          <Text>Delivery fee:</Text>
+          <Text>${deliveryFee}</Text>
+        </Flex>
+        <Flex justify="space-between" fontWeight="bold" width="100%">
+          <Text>Total:</Text>
+          <Text>${total}</Text>
+        </Flex>
+        <Button colorScheme="teal" width="100%">
+          Pay ${total}
+        </Button>
+      </VStack>
+    </Container>
   );
 };
 

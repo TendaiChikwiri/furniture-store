@@ -1,10 +1,11 @@
 import ProductGrid from "../components/ProductGrid";
+import { Box } from "@chakra-ui/react";
 
 const Home = ({ addToCart, furnitureData }) => {
   return (
-    <main>
+    <Box>
       <ProductGrid addToCart={addToCart} furnitureData={furnitureData} />
-    </main>
+    </Box>
   );
 };
 
